@@ -8,5 +8,6 @@ namespace Backend.Infra.Data
         {
         }
         public DbSet<Domain.Entities.Client> Clients { get; set; }
+        public DbSet<Domain.Entities.Address> Address { get; set; }
     }
 }
