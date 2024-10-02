@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Backend.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Infra.Data
 {
@@ -7,7 +8,8 @@ namespace Backend.Infra.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
-        public DbSet<Domain.Entities.Client> Clients { get; set; }
-        public DbSet<Domain.Entities.Address> Address { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+
     }
 }
