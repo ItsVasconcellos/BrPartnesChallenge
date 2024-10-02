@@ -10,9 +10,7 @@ namespace Backend.Domain.Entities
         public required string State { get; set; }
         public required string ZipCode { get; set; }
         public required AddressType Type { get; set; }  
-        public required int CustomerId { get; set; }
         public required Client Client  { get; set; }
     }
-
 
 }

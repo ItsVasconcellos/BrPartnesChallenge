@@ -7,7 +7,7 @@ namespace Backend.Infra.Repositories.Interfaces
         Task<IEnumerable<Address>> GetAllAddress();
         Task<Address?> GetAddressById(int addressId);
 
-        Task<Address?> GetAddressByClientId(int clientID);
+        Task<List<Address>?> GetAddressByClientId(int clientID);
 
         Task<bool> AddAddress(Address address);
         Task<bool> UpdateAddress(Address address);
