@@ -32,8 +32,12 @@ namespace Backend.Services
             return await _clientRepository.UpdateClient(client);
         }
 
-        public async Task<bool> DeleteClient(Client client)
+        public async Task<bool> DeleteClient(int id)
         {
+            Client? client = await _clientRepository.GetClientById(id);
+            if (client == null) {
+                return false;
+            }
             return await _clientRepository.Delete(client);
         }
     }

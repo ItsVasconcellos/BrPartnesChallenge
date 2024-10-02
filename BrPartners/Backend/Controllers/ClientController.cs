@@ -40,7 +40,7 @@ namespace Backend.Controllers
             List<ClientDTO> clientsResponse = new List<ClientDTO>();
 
             foreach (Client client in clients) {
-                List<Address>? addresses = await _addressService.GetAddressByClientID(client.id);
+                List<Address>? addresses = await _addressService.GetAddressByClientId(client.id);
                 var clientDTO = new ClientDTO
                 {
                     Id = client.id,
@@ -81,7 +81,7 @@ namespace Backend.Controllers
                 return NotFound();
             }
 
-            List<Address>? addresses = await _addressService.GetAddressByClientID(client.id);
+            List<Address>? addresses = await _addressService.GetAddressByClientId(client.id);
             var clientDTO = new ClientDTO
             {
                 Id = client.id,
@@ -128,10 +128,6 @@ namespace Backend.Controllers
             return update ? Ok() : NotFound();
         }
 
-        private bool ClientExists(int id)
-        {
-          
-        }
     }
 
 }
