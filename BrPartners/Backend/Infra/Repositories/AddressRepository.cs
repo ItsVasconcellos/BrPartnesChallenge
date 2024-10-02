@@ -20,6 +20,12 @@ namespace Backend.Infra.Repositories
         {
             return await _context.Addresses.FindAsync(addressId);
         }
+        public async Task<List<Address>> GetAddressesByClientIdAsync(int clientID)
+        {
+            return await _context.Addresses
+                                 .Where(a => a.Client.id == clientID)
+                                 .ToListAsync();
+        }
 
         public async Task<bool> AddAddress(Address address)
         {
