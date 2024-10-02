@@ -8,6 +8,8 @@ using Backend.Domain.DTOs.Responses;
 
 using Backend.Infra.Repositories;
 using Backend.Services.Interfaces;
+using Backend.Domain.DTOs.ViewModels;
+using AutoMapper;
 
 namespace Backend.Controllers
 {
@@ -18,12 +20,13 @@ namespace Backend.Controllers
     {
         private readonly IClientService _clientService;
         private readonly IAddressService _addressService;
+        private readonly IMapper _mapper;
 
-
-        public ClientController(IClientService clientService, IAddressService addressService)
+        public ClientController(IClientService clientService, IAddressService addressService, IMapper mapper)
         {
             _clientService = clientService;
             _addressService = addressService;
+            _mapper = mapper;
         }
 
         [HttpGet("getAllClients")]
@@ -100,16 +103,19 @@ namespace Backend.Controllers
         }
 
         [HttpPut("updateClient")]
-        public async Task<IActionResult> UpdateClient([FromBody] Client client)
-        {
+        public async Task<IActionResult> UpdateClient([FromBody] ClientRequest client_request) 
+        { 
+            Client client = _mapper.Map<Client>(client_request);
             bool update = await _clientService.UpdateClient(client);
             return update ? Ok() : NotFound();
         }
 
         [HttpPost]
         [Route("createClient")]
-        public async Task<ActionResult> CreateClient([FromBody] Client client)
+        public async Task<ActionResult> CreateClient([FromBody] ClientRequest client_request)
         {
+
+            Client client = _mapper.Map<Client>(client_request);
             bool update = await _clientService.CreateClient(client);
             return update ? Ok() : BadRequest("Failed to create client."); ;
         }
