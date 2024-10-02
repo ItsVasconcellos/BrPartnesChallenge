@@ -30,8 +30,8 @@ namespace Backend.Infra.Repositories {
             try
             {
                 await _context.Clients.AddAsync(client);
-                var result = await _context.SaveChangesAsync(); 
-                return result > 0;
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {
@@ -43,8 +43,8 @@ namespace Backend.Infra.Repositories {
             try
             {
                  _context.Clients.Update(client);
-                var result = await _context.SaveChangesAsync();
-                return result > 0;
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {
@@ -57,8 +57,8 @@ namespace Backend.Infra.Repositories {
             try
             {
                 _context.Clients.Remove(client);
-                var result = await _context.SaveChangesAsync();
-                return result > 0;
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {

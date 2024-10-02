@@ -26,8 +26,7 @@ namespace Backend.Controllers
             _addressService = addressService;
         }
 
-        [HttpGet]
-        [Route("getAllClients")]
+        [HttpGet("getAllClients")]
         public async Task<ActionResult<IEnumerable<ClientDTO>>> GetClients()
         {
             Client[] clients = (await _clientService.GetAllClients()).ToArray();
@@ -69,9 +68,7 @@ namespace Backend.Controllers
             
         }
 
-        [HttpGet("{id}")]
-
-        [Route("getClient")]
+        [HttpGet("getClient/{id}")]
         public async Task<ActionResult<Client>> GetClient(int id)
         {
             Client client = await _clientService.GetClientById(id);
@@ -104,10 +101,8 @@ namespace Backend.Controllers
             return Ok(clientDTO);
         }
 
-        [HttpPut()]
-
-        [Route("updateClient")]
-        public async Task<IActionResult> UpdateClient(Client client)
+        [HttpPut("updateClient")]
+        public async Task<IActionResult> UpdateClient([FromBody] Client client)
         {
             bool update = await _clientService.UpdateClient(client);
             return update ? Ok() : NotFound();
@@ -115,10 +110,10 @@ namespace Backend.Controllers
 
         [HttpPost]
         [Route("createClient")]
-        public async Task<ActionResult> CreateClient(Client client)
+        public async Task<ActionResult> CreateClient([FromBody] Client client)
         {
             bool update = await _clientService.CreateClient(client);
-            return update ? Ok() : NotFound();
+            return update ? Ok() : BadRequest("Failed to create client."); ;
         }
 
         [HttpDelete("{id}")]
