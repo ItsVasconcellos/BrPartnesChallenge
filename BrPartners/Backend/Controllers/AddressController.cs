@@ -49,14 +49,21 @@ namespace Backend.Controllers
         }
 
         [HttpGet("getAddress/{id}")]
-        public async Task<ActionResult<List<AddressDTO>>> GetAddress(int id)
+        public async Task<ActionResult<AddressDTO>> GetAddress(int id)
         {
-            Address[] addressDB = (await _addressService.GetAddressById(id)).ToArray();
+            Address addressDB = await _addressService.GetAddressById(id);
 
-            if (addressDB == null || !addressDB.Any())
+            if (addressDB == null )
             {
                 return NotFound();
             }
+            return Ok(addressDB);
+        }
+
+        [HttpGet("getAddressByCliend/{id}")]
+        public async Task<ActionResult<List<AddressDTO>>> GetAddressByClientID(int id)
+        {
+            List<Address> addressDB = await _addressService.GetAddressByClientId(id);
 
             List<AddressDTO> addressResponse = new List<AddressDTO>();
 
@@ -73,8 +80,7 @@ namespace Backend.Controllers
 
                 addressResponse.Add(addressDTO);
             }
-            return Ok(addressResponse);
-
+            return (Ok(addressResponse));
         }
 
         [HttpPut("updateAddress")]
