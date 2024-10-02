@@ -6,7 +6,7 @@ Este projeto implementa um sistema de CRUD para cadastro de clientes com a possi
 
 - Cadastro de Clientes com informações como nome, e-mail, telefone, sexo e idade.
 - Gerenciamento de Endereços (Fiscal, Cobrança, Entrega) vinculados a cada cliente.
-- Exibição dos dados em telas utilizando grids da DevExpress. (Não finalizado)
+- Exibição dos dados em telas utilizando grids da DevExpress. (O projeto foi apenas inicializado)
 - Uso de ASP.NET Core MVC para a arquitetura de controle e visualização.
 - Implementação baseada no padrão DDD (Domain-Driven Design) para separar as camadas de domínio e aplicação.
 - Integração com o SQL Server para armazenamento de dados.
