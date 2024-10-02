@@ -59,11 +59,9 @@ namespace Backend.Controllers
                     }).ToList()
                 };
 
-                // Add the client with addresses DTO to the list
                 clientsResponse.Add(clientDTO);
             }
 
-            // Returns 200 OK with the list of clients and their addresses
             return Ok(clientsResponse);
             
         }
