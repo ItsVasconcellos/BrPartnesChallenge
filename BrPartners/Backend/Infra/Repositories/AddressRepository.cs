@@ -32,8 +32,8 @@ namespace Backend.Infra.Repositories
             try
             {
                 await _context.Addresses.AddAsync(address);
-                var result = await _context.SaveChangesAsync();
-                return result > 0;
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {
@@ -46,8 +46,8 @@ namespace Backend.Infra.Repositories
             try
             {
                 _context.Addresses.Update(address);
-                var result = await _context.SaveChangesAsync();
-                return result > 0;
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {
@@ -59,8 +59,8 @@ namespace Backend.Infra.Repositories
             try
             {
                 _context.Addresses.Remove(address);
-                var result = await _context.SaveChangesAsync();
-                return result > 0;
+                await _context.SaveChangesAsync();
+                return true;
             }
             catch (Exception ex)
             {
