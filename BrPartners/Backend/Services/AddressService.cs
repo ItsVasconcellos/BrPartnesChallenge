@@ -1,6 +1,7 @@
 ﻿using Backend.Domain.Entities;
 using Backend.Infra.Repositories.Interfaces;
 using Backend.Services.Interfaces;
+using System.Net;
 
 namespace Backend.Services
 {
@@ -35,8 +36,13 @@ namespace Backend.Services
         {
             return await _addressRepository.UpdateAddress(address);
         }
-        public async Task<bool> DeleteAddress(Address address)
+        public async Task<bool> DeleteAddress(int addressId)
         {
+            Address address = await _addressRepository.GetAddressById(addressId);
+            if (address == null)
+            {
+                return false;
+            }
             return await _addressRepository.DeleteAddress(address);
         }
     }

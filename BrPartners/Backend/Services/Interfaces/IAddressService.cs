@@ -8,6 +8,6 @@ namespace Backend.Services.Interfaces
         Task<List<Address>?> GetAddressByClientId(int clientID);
         Task<bool> AddAddress(Address address);
         Task<bool> UpdateAddress(Address address);
-        Task<bool> DeleteAddress(Address address);
+        Task<bool> DeleteAddress(int id);
     }
 }
