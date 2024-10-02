@@ -8,6 +8,7 @@ namespace Backend.Domain.DTOs.ViewModels
         public required string City { get; set; }
         public required string State { get; set; }
         public required string ZipCode { get; set; }
+        public required int ClientId { get; set; }
         public AddressType Type { get; set; }
     }
 }

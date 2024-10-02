@@ -51,6 +51,7 @@ namespace Backend.Infra.Repositories
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
             }
         }

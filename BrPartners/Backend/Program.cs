@@ -1,4 +1,5 @@
-﻿using Backend.Infra.Data;
+﻿using Backend.Domain.DTOs.Helpers;
+using Backend.Infra.Data;
 using Backend.Infra.Repositories;
 using Backend.Infra.Repositories.Interfaces;
 using Backend.Services;
@@ -7,6 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAutoMapper(typeof(ClientProfile)); // Altere para o tipo do seu perfil
+builder.Services.AddAutoMapper(typeof(AddressProfile)); // Altere para o tipo do seu perfil
+
 
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();

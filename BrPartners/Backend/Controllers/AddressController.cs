@@ -1,4 +1,6 @@
-﻿using Backend.Domain.DTOs.Responses;
+﻿using AutoMapper;
+using Backend.Domain.DTOs.Responses;
+using Backend.Domain.DTOs.ViewModels;
 using Backend.Domain.Entities;
 using Backend.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -11,11 +13,15 @@ namespace Backend.Controllers
     public class AddressController : ControllerBase
     {
         private readonly IAddressService _addressService;
+        private readonly IClientService _clientService;
+        private readonly IMapper _mapper;
 
 
-        public AddressController(IAddressService addressService)
+        public AddressController(IAddressService addressService, IClientService clientService, IMapper mapper)
         {
             _addressService = addressService;
+            _clientService = clientService;
+            _mapper = mapper;
         }
 
         [HttpGet("getAllAddress")]
@@ -84,16 +90,22 @@ namespace Backend.Controllers
         }
 
         [HttpPut("updateAddress")]
-        public async Task<IActionResult> UpdateAddress([FromBody] Address address)
+        public async Task<IActionResult> UpdateAddress([FromBody] AddressRequest addressRequest, int addressId)
         {
+            Address address = _mapper.Map<Address>(addressRequest);
+            address.Id = addressId;
+            Client client = await _clientService.GetClientById(addressRequest.ClientId);
             bool update = await _addressService.UpdateAddress(address);
             return update ? Ok() : NotFound();
         }
 
         [HttpPost]
         [Route("createAddress")]
-        public async Task<ActionResult> CreasteAddress([FromBody] Address address)
+        public async Task<ActionResult> CreasteAddress([FromBody] AddressRequest addressRequest)
         {
+            Address address = _mapper.Map<Address>(addressRequest);
+            Client client = await _clientService.GetClientById(addressRequest.ClientId);
+            address.Client = client;
             bool update = await _addressService.AddAddress(address);
             return update ? Ok() : BadRequest("Failed to add address."); ;
         }
