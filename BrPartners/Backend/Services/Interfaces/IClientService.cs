@@ -5,10 +5,10 @@ namespace Backend.Services.Interfaces
     public interface IClientService
     {
         Task<Client?> GetClientById(int clientId);
-        Task<IEnumerable<Client>> GetAllClients();
-        Task<Client> CreateClient(Client client);
+        Task<IEnumerable<bool>> GetAllClients();
+        Task<bool> CreateClient(Client client);
         Task<bool> UpdateClient(Client client);
-        Task<bool> DeleteClient(Client client);
+        Task<bool> DeleteClient(int id);
 
     }
 }

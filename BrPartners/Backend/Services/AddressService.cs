@@ -21,6 +21,12 @@ namespace Backend.Services
         {
             return await _addressRepository.GetAddressById(addressId);
         }
+        public async Task<List<Address>?> GetAddressByClientId(int addressId)
+        {
+            return await _addressRepository.GetAddressByClientId(addressId);
+        }
+
+
         public async Task<bool> AddAddress(Address address)
         {
             return await _addressRepository.AddAddress(address);

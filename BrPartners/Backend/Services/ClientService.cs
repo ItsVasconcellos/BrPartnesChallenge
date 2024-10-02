@@ -22,10 +22,9 @@ namespace Backend.Services
             return await _clientRepository.GetAllClients();
         }
 
-        public async Task<Client> CreateClient(Client client)
+        public async Task<bool> CreateClient(Client client)
         {
-            await _clientRepository.AddClient(client);
-            return client;
+            return await _clientRepository.AddClient(client);
         }
 
         public async Task<bool> UpdateClient(Client client)
