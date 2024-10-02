@@ -1,5 +1,6 @@
 ﻿using Backend.Domain.Entities;
 using Backend.Infra.Data;
+using Backend.Infra.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 
