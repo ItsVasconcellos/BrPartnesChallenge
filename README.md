@@ -83,9 +83,18 @@ O projeto segue o padrão DDD, com uma clara separação de responsabilidades:
 ```
 
 ## Funcionalidades das Rotas
+
+### Rotas de Clientes
 - **GET /api/Client/getAllClients**: Retorna todos os clientes e seus respectivos endereços.
 - **GET /api/Client/getClient/{id}**: Retorna um cliente específico com seus endereços.
 - **POST /api/Client/createClient**: Cria um novo cliente e seus endereços.
 - **PUT /api/Client/updateClient**: Atualiza os dados de um cliente existente.
 - **DELETE /api/Client/{id}**: Exclui um cliente do sistema.
 
+### Rotas de Endereços
+- **GET /api/Address/getAllAddress**: Retorna todos os endereços cadastrados.
+- **GET /api/Address/getAddress/{id}**: Retorna um endereço específico pelo ID.
+- **GET /api/Address/getAddressByClient/{id}**: Retorna todos os endereços vinculados a um cliente específico.
+- **POST /api/Address/createAddress**: Adiciona um novo endereço ao sistema.
+- **PUT /api/Address/updateAddress**: Atualiza os dados de um endereço existente.
+- **DELETE /api/Address/{id}**: Remove um endereço específico do sistema.
